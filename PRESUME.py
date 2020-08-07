@@ -1517,11 +1517,11 @@ if __name__ == "__main__":
         #return_main = main(args.monitor)
         prof = LineProfiler()
         prof.add_function(main)
-        prof.runcall(main(args.monitor))
+        prof.runcall(main,args.monitor)
         prof.print_stats()
     else:
         prof = LineProfiler()
         prof.add_function(recursive_main)
-        prof.runcall(recursive_main(args.monitor, args.r, main))
+        prof.runcall(recursive_main,args.monitor, args.r, main)
         prof.print_stats()
 #       print("Number of retrials:", counter)
