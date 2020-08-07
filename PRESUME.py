@@ -24,6 +24,7 @@ import re
 import csv
 import copy
 import gzip
+from line_profiler import LineProfiler
 
 LOGO = '''
 ######     ######     #######     #####     #     #    #     #    #######
@@ -1513,7 +1514,14 @@ if __name__ == "__main__":
     #   excecute main
     print(LOGO)
     if args.r == 1:
-        return_main = main(args.monitor)
+        #return_main = main(args.monitor)
+        prof = LineProfiler()
+        prof.add_function(main)
+        prof.runcall(main(args.monitor))
+        prof.print_stats()
     else:
-        counter = recursive_main(args.monitor, args.r, main)
+        prof = LineProfiler()
+        prof.add_function(main)
+        prof.runcall(recursive_main(args.monitor, args.r, main))
+        prof.print_stats()
 #       print("Number of retrials:", counter)
