@@ -41,6 +41,7 @@ GitHub:      https://github.com/yachielab/PRESUME
 '''
 
 # set environment
+os.environ["OMP_NUM_THREADS"] = "1"
 
 # absolute path of python3 directory
 PYTHON3 = (((
